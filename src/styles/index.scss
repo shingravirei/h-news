@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&display=swap');
+@use "sass:color";
+
+$bg-color: #fff;
+$fg-color: #293241;
+$brand-color: #ee6c4d;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Bitter, Serif;
+    line-height: 1.4;
+}
+
+.container {
+    display: flex;
+}
+
+.story-list-wrapper {
+    width: 25rem;
+    overflow-y: scroll;
+    height: 100vh;
+    scrollbar-width: none;
+}
+
+.story-list {
+    border-right: 1px solid $brand-color;
+    background-color: $bg-color;
+}
+
+.story {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 6rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: inherit;
+    border-bottom: 1px solid $brand-color;
+    color: $fg-color;
+    transition: background-color 300ms ease;
+    animation: fadein 500ms;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.story:hover {
+    background-color: lighten($brand-color, 30);
+}
+
+.story:active {
+    background-color: red;
+}
+
+.story-stats {
+    display: flex;
+    font-size: 0.875rem;
+    color: lighten($fg-color, 10);
+
+    p {
+        display: flex;
+        align-items: center;
+        margin-right: 0.675rem;
+        margin-top: 0.25rem;
+    }
+}
+
+.story-loader {
+    height: 5rem;
+    width: inherit;
+    border-bottom: 1px solid black;
+}
+
+ion-icon {
+    font-size: 0.875rem;
+    padding-right: 0.125rem;
+    --ionicon-stroke-width: 40px;
+}
