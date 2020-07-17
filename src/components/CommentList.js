@@ -1,23 +1,16 @@
 import * as React from 'react';
-import { useQuery } from 'react-query';
-import { apiGetItem } from '../services/api';
 
 import Comment from './Comment';
+import { Context } from '../App';
 
 const CommentList = () => {
-    const { isLoading, error, data } = useQuery(
-        ['getItem', 23872625],
-        apiGetItem
-    );
+    const { story } = React.useContext(Context);
 
-    if (isLoading) return <h1>getting comments</h1>;
-
-    if (error) return <h1>{error.message}</h1>;
-
+    if (!story) return <h1>other nada</h1>;
     return (
         <div className={'comments-wrapper'}>
             <ul className={'comments'}>
-                {data.kids.map((id) => (
+                {story.kids.map((id) => (
                     <Comment id={id} key={id} />
                 ))}
             </ul>

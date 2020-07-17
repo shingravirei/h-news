@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Navbar = ({ setStory }) => {
+const Navbar = ({ setStoryType }) => {
     return (
         <div className={'navbar'}>
             <nav className={'navbar-nav'}>
@@ -9,17 +9,17 @@ const Navbar = ({ setStory }) => {
                         <ion-icon name="logo-hackernews"></ion-icon> H-News
                     </li>
                     <li className={'nav-item'}>
-                        <button onClick={() => setStory('topStories')}>
+                        <button onClick={() => setStoryType('topStories')}>
                             Top
                         </button>
                     </li>
                     <li className={'nav-item'}>
-                        <button onClick={() => setStory('newStories')}>
+                        <button onClick={() => setStoryType('newStories')}>
                             New
                         </button>
                     </li>
                     <li className={'nav-item'}>
-                        <button onClick={() => setStory('bestStories')}>
+                        <button onClick={() => setStoryType('bestStories')}>
                             Best
                         </button>
                     </li>

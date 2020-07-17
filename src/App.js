@@ -4,15 +4,28 @@ import Navbar from './components/Navbar';
 import StoryList from './components/StoryList';
 import ShowStory from './components/ShowStory';
 
+export const Context = React.createContext({
+    storyId: {},
+    changeStory: () => {}
+});
+
 const App = () => {
-    const [story, setStory] = React.useState('topStories');
+    const [storyType, setStoryType] = React.useState('topStories');
+    const [story, setStory] = React.useState(null);
 
     return (
         <div>
-            <Navbar setStory={setStory} />
+            <Navbar setStoryType={setStoryType} />
             <div className={'container'}>
-                <StoryList story={story} />
-                <ShowStory />
+                <Context.Provider
+                    value={{
+                        story,
+                        setStory
+                    }}
+                >
+                    <StoryList storyType={storyType} />
+                    <ShowStory />
+                </Context.Provider>
             </div>
         </div>
     );

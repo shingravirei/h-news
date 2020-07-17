@@ -6,9 +6,9 @@ import { useQuery } from 'react-query';
 import InfiniteScroll from 'react-infinite-scroller';
 import Story from './Story';
 
-const StoryList = ({ story }) => {
+const StoryList = ({ storyType }) => {
     const { isLoading, error, data } = useQuery(
-        ['getStories', story],
+        ['getStories', storyType],
         apiGetStories
     );
     const [upper, setUpper] = React.useState(10);

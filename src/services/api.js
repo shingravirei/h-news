@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const client = axios.create({ baseURL: 'https://hacker-news.firebaseio.com' });
 
-const apiGetStories = async (_, story) => {
+const apiGetStories = async (_, storyType) => {
     let res;
-    switch (story) {
+    switch (storyType) {
         case 'newStories':
             res = await client.get('/v0/newstories.json');
 

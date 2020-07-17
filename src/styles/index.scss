@@ -75,6 +75,8 @@ body {
 .show-story {
     $l-margin-size: 2rem;
     margin-top: 1rem;
+    overflow-y: scroll;
+    height: 100vh;
 
     h1 {
         font-size: 1.5rem;

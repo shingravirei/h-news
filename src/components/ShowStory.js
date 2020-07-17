@@ -1,27 +1,33 @@
 import * as React from 'react';
+import * as timeAgo from 'timeago.js';
 
+import { Context } from '../App';
 import CommentList from './CommentList';
 
 const ShowStory = () => {
+    const { story } = React.useContext(Context);
+
+    if (!story) return <h1>nada</h1>;
+
     return (
         <div className={'show-story'}>
-            <h1>All the Ways to Make a Web Component</h1>
+            <h1>{story.title}</h1>
             <div className={'story-stats'}>
                 <p>
                     <ion-icon name="arrow-up-outline"></ion-icon>
-                    <span>{23}</span>
+                    <span>{story.score}</span>
                 </p>
                 <p>
                     <ion-icon name="chatbox-outline"></ion-icon>
-                    <span>{12}</span>
+                    <span>{story.kids.length}</span>
                 </p>
                 <p>
                     <ion-icon name="time-outline"></ion-icon>
-                    <span>{'11 minutes ago'}</span>
+                    <span>{timeAgo.format(story.time * 1000)}</span>
                 </p>
                 <p>
                     <ion-icon name="person-outline"></ion-icon>{' '}
-                    <span>{'someone'}</span>
+                    <span>{story.by}</span>
                 </p>
             </div>
             <CommentList />

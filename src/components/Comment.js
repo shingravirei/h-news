@@ -9,14 +9,8 @@ const Comment = ({ id }) => {
 
     if (error) return <h2>error.messa</h2>;
 
-    return (
-        <li>
-            {data.text}
-            {data.kids
-                ? data.kids.map((kidId) => <Comment id={kidId} key={kidId} />)
-                : null}
-        </li>
-    );
+    // TODO: add recursive call to get child comments
+    return <li>{data && data.text}</li>;
 };
 
 export default Comment;

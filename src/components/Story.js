@@ -4,15 +4,23 @@ import * as timeAgo from 'timeago.js';
 import { apiGetItem } from '../services/api';
 import { useQuery } from 'react-query';
 
+import { Context } from '../App';
 import StoryLoader from './StoryLoader';
 
 const Story = ({ id }) => {
     const { isLoading, error, data } = useQuery(['story', id], apiGetItem);
+    const { setStory } = React.useContext(Context);
 
     if (error) return <div>Error: error.message</div>;
 
     return (
-        <div tabIndex={0} className={'story'}>
+        <div
+            tabIndex={0}
+            className={'story'}
+            onClick={() => {
+                setStory(data);
+            }}
+        >
             {isLoading ? (
                 <StoryLoader />
             ) : (
