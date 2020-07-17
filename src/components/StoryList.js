@@ -1,13 +1,16 @@
 import * as React from 'react';
 
-import { apiGetTopStories } from '../services/api';
+import { apiGetStories } from '../services/api';
 import { useQuery } from 'react-query';
 
 import InfiniteScroll from 'react-infinite-scroller';
 import Story from './Story';
 
-const StoryList = () => {
-    const { isLoading, error, data } = useQuery('topStories', apiGetTopStories);
+const StoryList = ({ story }) => {
+    const { isLoading, error, data } = useQuery(
+        ['getStories', story],
+        apiGetStories
+    );
     const [upper, setUpper] = React.useState(10);
     const [hasMore, setHasMore] = React.useState(true);
 
@@ -17,7 +20,6 @@ const StoryList = () => {
 
     const load = (page) => {
         if (page * 10 > data.length) {
-            console.log('storp');
             setHasMore(false);
             return;
         }

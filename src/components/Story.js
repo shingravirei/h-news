@@ -12,7 +12,7 @@ const Story = ({ id }) => {
     if (error) return <div>Error: error.message</div>;
 
     return (
-        <div className={'story'}>
+        <div tabIndex={0} className={'story'}>
             {isLoading ? (
                 <StoryLoader />
             ) : (

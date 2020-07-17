@@ -2,10 +2,24 @@ import axios from 'axios';
 
 const client = axios.create({ baseURL: 'https://hacker-news.firebaseio.com' });
 
-const apiGetTopStories = async () => {
-    const res = await client.get('/v0/topstories.json');
+const apiGetStories = async (_, story) => {
+    let res;
+    switch (story) {
+        case 'newStories':
+            res = await client.get('/v0/newstories.json');
 
-    return res.data;
+            return res.data;
+
+        case 'bestStories':
+            res = await client.get('/v0/beststories.json');
+
+            return res.data;
+
+        default:
+            res = await client.get('/v0/topstories.json');
+
+            return res.data;
+    }
 };
 
 const apiGetItem = async (_, id) => {
@@ -14,4 +28,4 @@ const apiGetItem = async (_, id) => {
     return res.data;
 };
 
-export { apiGetTopStories, apiGetItem };
+export { apiGetStories, apiGetItem };
