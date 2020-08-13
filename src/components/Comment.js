@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useQuery } from 'react-query';
-import { apiGetItem } from '../services/api';
+import { apiGetItem } from 'services/api';
 
 const Comment = ({ id }) => {
     const { isLoading, error, data } = useQuery(['getComment', id], apiGetItem);

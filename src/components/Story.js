@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as timeAgo from 'timeago.js';
 
-import { apiGetItem } from '../services/api';
+import { apiGetItem } from 'services/api';
 import { useQuery } from 'react-query';
 
-import { Context } from '../App';
+import { Context } from 'App';
 import StoryLoader from './StoryLoader';
 
 const Story = ({ id }) => {
